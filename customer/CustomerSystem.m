@@ -1,7 +1,4 @@
 classdef CustomerSystem
-    %CUSTOMERSYSTEM Summary of this class goes here
-    %   Detailed explanation goes here
-    
     properties (Access = private)
         customers
         customerNum
@@ -9,8 +6,6 @@ classdef CustomerSystem
     
     methods (Access = public)
         function this = CustomerSystem(customers)
-            %CUSTOMERSYSTEM Construct an instance of this class
-            %   Detailed explanation goes here
             this.customers = customers;
             [this.customerNum, ~] = size(customers);
         end
@@ -41,7 +36,7 @@ classdef CustomerSystem
 
         function k = getCustomerIdx(this, uid)
             for i = 1:this.customerNum
-                if (this.customers(i).getUid() == uid)            
+                if (strcmp(this.customers(i).getUid(), uid))
                     k = i;
                     return
                 end
@@ -57,6 +52,21 @@ classdef CustomerSystem
                 return
             end
             customer = this.customers(idx);
+        end
+        
+        function [retStr, customer] = logIn(this, uid, password)
+            if (~ this.isValidCustomer(uid))
+                retStr = Common.LogInUidInvalid;
+                customer = [];
+                return;
+            end
+            customer = this.getCustomer(uid);
+            if (~ customer.passwordMatch(password))
+                customer = [];
+                retStr = Common.LogInWrongPassword;
+                return;
+            end
+            retStr = Common.LogInSuccessful;
         end
     end
 end

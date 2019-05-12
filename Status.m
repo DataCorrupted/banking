@@ -10,6 +10,7 @@ classdef Status < int32
       InvalidAmount     (-3)
       InvalidCustomer   (-4)
       InvalidAccount    (-5)
+      WrongPassword     (-6)
    end
 end
 

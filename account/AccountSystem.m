@@ -8,6 +8,10 @@ classdef AccountSystem
     end
     
     methods (Access = public)
+        function this = AccountSystem(accounts)
+            this.accounts = accounts;
+            [this.accountNum, ~] = size(accounts);
+        end
         function this = addAccount(this, customer)
             this.accounts = [this.accounts; customer];
             this.customerNum = this.customerNum + 1;
@@ -32,20 +36,20 @@ classdef AccountSystem
             this.customerNum = this.customerNum - 1;
         end
 
-        function k = getAccountIdx(this, uid)
+        function k = getAccountIdx(this, account)
             for i = 1:this.customerNum
-                if (this.accounts(i).getUid() == uid)            
+                if (strcmp(this.accounts(i).getAid(), account))
                     k = i;
                     return
                 end
             end
-            k = 0;  % Failed. Such customer doesn't exist.
+            k = 0;  % Failed. Such account doesn't exist.
         end
-        function isValid = isValidAccount(this, uid)
-            isValid = (this.getAccountIdx(uid) ~= 0);
+        function isValid = isValidAccount(this, aid)
+            isValid = (this.getAccountIdx(aid) ~= 0);
         end
-        function customer = getAccount(this, uid)
-            idx = this.getAccountIdx(uid);
+        function customer = getAccount(this, aid)
+            idx = this.getAccountIdx(aid);
             if (idx == 0)
                 return
             end

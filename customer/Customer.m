@@ -2,7 +2,7 @@ classdef (Abstract) Customer < handle
     %Customer Summary of this class goes here
     %   Detailed explanation goes here
     
-    properties (Access = private)
+    properties (Access = protected)
         uid
         name
         password
@@ -24,6 +24,18 @@ classdef (Abstract) Customer < handle
         end
         function this = addAccount(this, account)
             this.accounts = [this.accounts; account];
+        end
+        function isMatch = passwordMatch(this, password)
+            isMatch = strcmp(this.password, password);
+        end
+        function name = getName(this)
+            name = this.name;
+        end
+        function accounts = getAccounts(this)
+            accounts = this.accounts;
+        end
+        function accountNum = getAccountNum(this)
+            accountNum = this.accountNum;
         end
     end
     

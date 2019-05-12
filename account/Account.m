@@ -3,17 +3,17 @@ classdef Account
     %   Detailed explanation goes here
     
     properties (Access = private)
+        aid
         remains
         password
-        accountNo
     end
     
     methods (Access = public)
         
-        function this = Account(accountNo, password)
+        function this = Account(aid, password)
+            this.aid = aid;
             this.remains = 0;
             this.password = password;
-            this.accountNo = accountNo;
         end
 
         function [this, status] = transferTo(this, destAccount, amount)
