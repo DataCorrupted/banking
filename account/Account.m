@@ -1,4 +1,4 @@
-classdef Account
+classdef Account < Entity
     %ACCOUNT Summary of this class goes here
     %   Detailed explanation goes here
     
@@ -11,9 +11,8 @@ classdef Account
     methods (Access = public)
         
         function this = Account(aid, password)
-            this.aid = aid;
+            this@Entity(aid, password)
             this.remains = 0;
-            this.password = password;
         end
 
         function [this, status] = transferTo(this, destAccount, amount)

@@ -1,5 +1,6 @@
 close all
 
+addpath('./entity');
 addpath('./account');
 addpath('./challenge');
 addpath('./customer');
