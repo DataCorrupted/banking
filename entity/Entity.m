@@ -1,4 +1,4 @@
-classdef (Abstract) Entity
+classdef (Abstract) Entity < handle
     properties
         id
         password

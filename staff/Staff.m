@@ -5,10 +5,10 @@ classdef Staff < Entity
     end
     
     methods (Access = public)
-        function this = Staff(sid, name, password)
+        function this = Staff(name, password, sid, isManager)
             this@Entity(sid, password);
             this.name = name;
-            this.manager = 0;
+            this.manager = isManager;
         end
         
     end

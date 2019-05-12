@@ -3,9 +3,7 @@ classdef Account < Entity
     %   Detailed explanation goes here
     
     properties (Access = private)
-        aid
         remains
-        password
     end
     
     methods (Access = public)
@@ -20,11 +18,11 @@ classdef Account < Entity
                 status = Status.InvalidAmount;  return;
             end
             if (this.remains < amount)
-                status = Status.Insuffice;      return;
+                status = Status.Insufficient;      return;
             end
             
             this.remains = this.remains - amount;
-            destAccount.remains = destAccount.deposit(amount);
+             destAccount.deposit(amount);
         end
         
         function remains = query(this)
@@ -41,7 +39,7 @@ classdef Account < Entity
         
         function [this, status] = withdraw(this, amount)
             if (amount > this.remains)
-                status = Status.Insuffice;  return;
+                status = Status.Insufficient;  return;
             end
             this.remains = this.remains - amount;
         end

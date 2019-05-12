@@ -1,15 +1,22 @@
 close all
 
-addpath('./entity');
+
 addpath('./account');
 addpath('./challenge');
+addpath('./common');
 addpath('./customer');
+addpath('./entity');
 addpath('./staff');
+addpath('./test');
 addpath('./ui');
 
-customerSystem = CustomerSystem(IndividualCustomer('1234', '1234', '1234', '1234'));
-accountSystem = AccountSystem([]);
+TestAccount; 
+accountSystem = testAccountSystem;
+
+TestCustomer;
+customerSystem = testCustomerSystem;
 
 processor = Processor(accountSystem, customerSystem);
 
-customerlogInUI = CustomerLogInUi(processor);
+customerLogInUI = CustomerLogInUi(processor);
+accountLogInUI = AccountLogInUi(processor, '0', 1);

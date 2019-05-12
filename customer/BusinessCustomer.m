@@ -8,7 +8,7 @@ classdef BusinessCustomer < Customer
     
     methods (Access = public)
         
-        function this = BusinessCustomer(uid, password, name, taxNo)
+        function this = BusinessCustomer(name, password, uid, taxNo)
             this@Customer(uid, password, name);
             this.taxNo = taxNo;
         end

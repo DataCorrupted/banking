@@ -1,4 +1,4 @@
-classdef (Abstract) EntitySystem
+classdef (Abstract) EntitySystem < handle
     properties (Access = protected)
         entities
         entityNum

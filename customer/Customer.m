@@ -1,4 +1,4 @@
-classdef (Abstract) Customer < Entity
+classdef Customer < Entity
     %Customer Summary of this class goes here
     %   Detailed explanation goes here
     
@@ -7,8 +7,8 @@ classdef (Abstract) Customer < Entity
         accounts
     end
     
-    methods (Access = protected)
-        function this = Customer(uid, password, name)
+    methods (Access = public)
+        function this = Customer(name, password, uid)
             this@Entity(uid, password);
             this.name = name;
             this.accounts = [];

@@ -6,7 +6,7 @@ classdef Status < int32
       Successful         (0)
       Waiting            (1)
       Failed            (-1)
-      Insuffice         (-2)
+      Insufficient      (-2)
       InvalidAmount     (-3)
       InvalidCustomer   (-4)
       InvalidAccount    (-5)
