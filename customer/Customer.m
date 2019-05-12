@@ -18,5 +18,14 @@ classdef (Abstract) Customer < handle
         end      
     end
     
+    methods (Access = public)
+        function uid = getUid(this)
+            uid = this.uid;
+        end
+        function this = addAccount(this, account)
+            this.accounts = [this.accounts; account];
+        end
+    end
+    
 end
 

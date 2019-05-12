@@ -7,7 +7,7 @@ classdef Challenge
     end
     
     methods (Abstract)
-        challenge()
+        challenge(this)
     end
     
     methods (Access = protected)

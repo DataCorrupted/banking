@@ -3,20 +3,17 @@ classdef Account
     %   Detailed explanation goes here
     
     properties (Access = private)
-        challengeList
-        accountNo
-        
         remains
+        password
+        accountNo
     end
     
     methods (Access = public)
         
-        function this = Account(accountNo, challengeList)
-            this.accountNo = accountNo;
-            % By default we allow transfer password.
-            this.challengeList = challengeList;
-            
+        function this = Account(accountNo, password)
             this.remains = 0;
+            this.password = password;
+            this.accountNo = accountNo;
         end
 
         function [this, status] = transferTo(this, destAccount, amount)

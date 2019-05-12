@@ -7,7 +7,7 @@ classdef PinChallenge < Challenge
             this@Challenge(name);
         end
         
-        function passed = challenge()
+        function passed = challenge(this)
             % Randomly generate a pin
             randomPin = 132456;
             

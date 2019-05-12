@@ -8,6 +8,8 @@ classdef Status < int32
       Failed            (-1)
       Insuffice         (-2)
       InvalidAmount     (-3)
+      InvalidCustomer   (-4)
+      InvalidAccount    (-5)
    end
 end
 

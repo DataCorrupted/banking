@@ -7,7 +7,7 @@ classdef PasswordChallenge < Challenge
             this@Challenge(name);
         end
         
-        function passed = challenge()
+        function passed = challenge(this)
             % From GUI take user password
             password = 123456;
             
