@@ -58,6 +58,8 @@ classdef NewAccountUi < matlab.apps.AppBase
             password1 = app.passwordHider1.getPassword();
             if (~ isExisting)
                 app.Hints.Value = retStr;
+                app.PasswordEditField.Value = "";
+                app.RepeatPasswordEditField.Value = "";
                 return;
             end
             retStr = app.processor.isValidPassword(password0, password1);

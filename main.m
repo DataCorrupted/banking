@@ -1,12 +1,10 @@
 close all;
 clear all;
 
-addpath('./account');
 addpath('./challenge');
 addpath('./common');
-addpath('./customer');
 addpath('./entity');
-addpath('./staff');
+addpath('./entity-system')
 addpath('./test');
 addpath('./ui/mlapp');
 

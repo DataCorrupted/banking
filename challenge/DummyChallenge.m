@@ -6,7 +6,7 @@ classdef DummyChallenge < Challenge
             this@Challenge("DummyChallenge");
         end
         
-        function passed = challenge(this)
+        function passed = doChallenge(~)
             passed = true;
         end
     end

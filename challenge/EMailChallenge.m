@@ -1,0 +1,4 @@
+classdef EMailChallenge < Challenge
+
+end
+

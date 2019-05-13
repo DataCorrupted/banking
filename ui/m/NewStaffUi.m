@@ -49,6 +49,8 @@ classdef NewStaffUi < matlab.apps.AppBase
             password1 = app.passwordHider1.getPassword();
             if (name == "")
                 app.Hints.Value = Common.NameEmpty;
+                app.PasswordEditField.Value = "";
+                app.RepeatPasswordEditField.Value = "";
             end
             retStr = app.processor.isValidPassword(password0, password1);
             if ~ strcmp(retStr, Common.PasswordValid)

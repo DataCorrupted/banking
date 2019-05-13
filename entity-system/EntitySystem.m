@@ -69,11 +69,9 @@ classdef (Abstract) EntitySystem < handle
             end
         end
         function str = getKLenRandStr(~, k)
-            str = char(zeros(1, k));
-            for i=1:k
-                str(i) = num2str(randi(9));
-            end
-            str = string(str);
+            symbols = ['0':'9'];
+            id = randi(numel(symbols),[1 k]);
+            str = string(symbols(id));
         end
         function num = getNum(this)
             num = this.entityNum;

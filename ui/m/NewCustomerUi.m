@@ -57,6 +57,8 @@ classdef NewCustomerUi < matlab.apps.AppBase
             end
             if (app.NameEditField.Value == "")
                 app.Hints.Value = Common.NameEmpty;
+                app.PasswordEditField.Value = "";
+                app.RepeatPasswordEditField.Value = "";
             end
             retStr = app.processor.isValidPassword(password0, password1);
             if ~ strcmp(retStr, Common.PasswordValid)
@@ -67,6 +69,8 @@ classdef NewCustomerUi < matlab.apps.AppBase
             end
             if (~app.IhaveagreedtosomenonsensethatnobodyeverreadsCheckBox.Value)
                 app.Hints.Value = Common.TermsDisagree;
+                app.PasswordEditField.Value = "";
+                app.RepeatPasswordEditField.Value = "";
                 return
             end
             name = app.NameEditField.Value;
