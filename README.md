@@ -2,6 +2,8 @@
 
 This is a project for CS192 Software Engineering.
 
+**Please refer to doc/ for change of requirements and testing plans.**
+
 In this banking project, I was responsible for development. Unfortunately, we have to use MATLAB, many features that I am not familar with is not used. The project could have been developed better if I am using Java.
 
 However, MATLAB's App Designer is really powerful, allowing me to develop 10 frontend pages and 3 backend data bases in 2 days.
