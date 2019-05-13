@@ -13,23 +13,16 @@ classdef (Abstract) EntitySystem < handle
         function this = addEntity(this, entity)
             this.entities = [this.entities; entity];
             this.entityNum = this.entityNum + 1;
+            this.deleteEntityFromPendingList(entity.getId());
         end
+
         function [this, status] = deleteEntity(this, id)
             i = this.getEntityIdx(id);
             if (i == 0)
                 status = Status.InvalidEntity;
                 return;
             end
-            if (i == 1)
-                this.entities = this.entities(2:this.entityNum);
-            else
-            if (i == this.entityNum)
-                this.entities = this.entities(1:this.entityNum - 1);
-            else
-                this.entities = [this.entities(1:i-1); 
-                             this.entities(i+1:this.entityNum)];
-            end
-            end
+            this.entities(i) = [];
             status = Status.Successful;
             this.entityNum = this.entityNum - 1;
         end
@@ -43,7 +36,7 @@ classdef (Abstract) EntitySystem < handle
             end
             k = 0;  % Failed. Such entity doesn't exist.
         end
-        function isValid = isValidEntity(this, id)
+        function isValid = isValid(this, id)
             isValid = (this.getEntityIdx(id) ~= 0);
         end
         function entity = getEntity(this, uid)
@@ -55,19 +48,34 @@ classdef (Abstract) EntitySystem < handle
         end
         
         function [retStr, entity] = logIn(this, id, password)
-            if (~ this.isValidEntity(id))
+            if (~ this.isValid(id))
                 retStr = Common.LogInIdInvalid;
                 entity = [];
                 return;
             end
             entity = this.getEntity(id);
             if (~ entity.passwordMatch(password))
-                entity = [];
                 retStr = Common.LogInWrongPassword;
+                entity = [];
                 return;
             end
             retStr = Common.LogInSuccessful;
-        end        
+        end 
+        
+        % TODO: Requires lock or atom for thread safety.
+        function entity = newId(this, len)
+            entity = this.getKLenRandStr(len);
+            while (this.getEntityIdx(entity) == 0)
+                entity = this.getKLenRandStr(len);
+            end
+        end
+        function str = getKLenRandStr(~, k)
+            str = char(zeros(1, k));
+            for i=1:k
+                str(i) = num2str(randi(9));
+            end
+            str = string(str);
+        end
     end
 end
 

@@ -5,20 +5,26 @@ classdef Processor
     properties (Access = private)
         accountSystem
         customerSystem
+        staffSystem
     end
     
     methods
-        function this = Processor(accountSystem, customerSystem)
+        function this = Processor(accountSystem, customerSystem, staffSystem)
             this.accountSystem = accountSystem;
             this.customerSystem = customerSystem;
+            this.staffSystem = staffSystem;
         end
         
-        function [resStr, customer] = logInCustomer(this, uid, password)
-           [resStr, customer] = this.customerSystem.logIn(uid, password);
+        function [retStr, customer] = logInCustomer(this, uid, password)
+           [retStr, customer] = this.customerSystem.logIn(uid, password);
         end
 
-        function [resStr, customer] = logInAccount(this, aid, password)
-           [resStr, customer] = this.accountSystem.logIn(aid, password);
+        function [retStr, account] = logInAccount(this, aid, password)
+           [retStr, account] = this.accountSystem.logIn(aid, password);
+        end
+        
+        function [retStr, staff] = logInStaff(this, sid, password)
+            [retStr, staff] = this.staffSystem.logIn(sid, password);
         end
         
         % We are assuming that the account always exist;
@@ -39,8 +45,7 @@ classdef Processor
                 case Status.InvalidAmount
                     retStr = Common.InvalidAmount;
                 case Status.Successful
-                    retStr = ['Transferred ', num2str(amount), 
-                                'CNY to account id: ', aid];
+                    retStr = "Transferred " + num2str(amount) +"CNY to account id: " + aid + ", " + this.query(srcAccount);
             end
         end
         
@@ -50,13 +55,39 @@ classdef Processor
                 case Status.Insufficient
                     retStr = Common.InsufficientFund;
                 case Status.Successful
-                    retStr = ['You just withdrew', num2str(amount), 
-                                'CNY, ', this.query(account)];
+                    retStr = "You just withdrew"+ num2str(amount)+ "CNY, " + this.query(account);
             end
         end
         
         function retStr = query(~, account)
-            retStr = ['you have ', num2str(account.query()),' CNY left in this account.'];
+            retStr = "you have " + num2str(account.query()) +" CNY left in this account.";
+        end
+        
+        function retStr = isValidPassword(password)
+            retStr = Common.PasswordValid;
+            if (strlength(password) < 8)
+                retStr = Common.PasswordTooShot;
+            end
+        end
+        
+        function [retStr, customer] = registerNewCustomer(name, password)
+            [~, customer] = processor.customerSystem.newCustomer(name, password);
+            retStr = "You have successfully registered with uid:" + customer.getId();
+        end
+        
+        function [isValid, retStr] = isValidUid(this, uid)
+            if this.customerSystem.isValid(uid)
+                retStr = Common.UidValid;
+                isValid = 1;
+            else
+                retStr = Common.UidInvalid;
+                isValid = 0;
+            end
+        end
+        
+        function [retStr, account] = registerNewAccount(customer, password)
+            [~, account] = this.accountSystem.newAccount(customer, password);
+            retStr = "You have successfully created an account with aid:" + account.getId();
         end
     end
 end

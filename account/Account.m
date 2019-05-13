@@ -20,9 +20,9 @@ classdef Account < Entity
             if (this.remains < amount)
                 status = Status.Insufficient;      return;
             end
-            
+            status = Status.Successful;
             this.remains = this.remains - amount;
-             destAccount.deposit(amount);
+            destAccount.deposit(amount);
         end
         
         function remains = query(this)
@@ -41,6 +41,7 @@ classdef Account < Entity
             if (amount > this.remains)
                 status = Status.Insufficient;  return;
             end
+            status = Status.Successful;
             this.remains = this.remains - amount;
         end
     end

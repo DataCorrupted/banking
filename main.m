@@ -1,5 +1,5 @@
-close all
-
+close all;
+clear all;
 
 addpath('./account');
 addpath('./challenge');
@@ -16,7 +16,11 @@ accountSystem = testAccountSystem;
 TestCustomer;
 customerSystem = testCustomerSystem;
 
-processor = Processor(accountSystem, customerSystem);
+TestStaff;
+staffSystem = testStaffSystem;
 
-customerLogInUI = CustomerLogInUi(processor);
-accountLogInUI = AccountLogInUi(processor, '0', 1);
+processor = Processor(accountSystem, customerSystem, staffSystem);
+
+%customerLogInUI = CustomerLogInUi(processor);
+%accountLogInUI = AccountLogInUi(processor, "0", 1);
+staffLogInUI = StaffLogInUi(processor);
