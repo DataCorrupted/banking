@@ -1,4 +1,4 @@
 all: archive
 
 archive: 
-	tar -zcvf banking.tar.gz main.m ui account challenge common customer entity	staff test README.md
+	tar -zcvf banking.tar.gz main.m ui challenge common entity entity-system test README.md
