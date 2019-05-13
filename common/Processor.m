@@ -1,13 +1,10 @@
 classdef Processor
-    %PROCESSOR Summary of this class goes here
-    %   Detailed explanation goes here
-    
     properties (Access = private)
         accountSystem
         customerSystem
         staffSystem
     end
-    
+       
     methods
         function this = Processor(accountSystem, customerSystem, staffSystem)
             this.accountSystem = accountSystem;
@@ -33,7 +30,11 @@ classdef Processor
         end
         
         function retStr = transfer(this, srcAccount, aid, amount)
-            if (~this.accountSystem.isValid(aid))
+            if (srcAccount.getId() == aid)
+                retStr = Common.IllegalSelfTransfer;
+                return
+            end
+            if (~this.accountSystem.isExisting(aid))
                 retStr = Common.InvalidAccount;
                 return
             end
@@ -56,6 +57,8 @@ classdef Processor
                     retStr = Common.InsufficientFund;
                 case Status.Successful
                     retStr = "You just withdrew"+ num2str(amount)+ "CNY, " + this.query(account);
+                case Status.InvalidAmount
+                    retStr = Common.InvalidAmount;
             end
         end
         
@@ -63,31 +66,63 @@ classdef Processor
             retStr = "you have " + num2str(account.query()) +" CNY left in this account.";
         end
         
-        function retStr = isValidPassword(password)
+        function retStr = isValidPassword(~, password0, password1)
             retStr = Common.PasswordValid;
-            if (strlength(password) < 8)
+            if (password0 == "" && password1 == "")
+                retStr = Common.PasswordEmpty;
+                return;
+            end
+            if ~strcmp(password0, password1)
+                retStr = Common.PasswordDiffer;
+                return
+            end
+            if (strlength(password0) < 8)
                 retStr = Common.PasswordTooShot;
+                return
             end
         end
         
-        function [retStr, customer] = registerNewCustomer(name, password)
-            [~, customer] = processor.customerSystem.newCustomer(name, password);
+        function [retStr, customer] = registerNewCustomer(this, name, password, uid)
+            [~, customer] = this.customerSystem.newCustomer(name, password, uid);
             retStr = "You have successfully registered with uid:" + customer.getId();
         end
         
-        function [isValid, retStr] = isValidUid(this, uid)
-            if this.customerSystem.isValid(uid)
-                retStr = Common.UidValid;
+        function [isValid, retStr] = isValidUId(this, uid)
+            isValid = 0;
+            if (strlength(uid) == 0)
+                retStr = Common.UIdEmpty;
+                return
+            end
+            if (strlength(uid) ~= this.customerSystem.getUIdLen())
+                retStr = Common.UIdWrongLength;
+                return;
+            end
+            if ~ this.customerSystem.isTaken(uid)
+                retStr = Common.UIdValid;
                 isValid = 1;
             else
-                retStr = Common.UidInvalid;
-                isValid = 0;
+                retStr = Common.UIdRegistered;
             end
         end
+        function [retStr, isExisting] = isExistingUId(this, uid)
+            isExisting = 0;
+            if this.customerSystem.isTaken(uid)
+                retStr = Common.UIdValid;
+                isExisting = 1;
+            else
+                retStr = Common.UIdRegistered;
+            end            
+        end
         
-        function [retStr, account] = registerNewAccount(customer, password)
+        function [retStr, account] = registerNewAccount(this, uId, password)
+            customer = this.customerSystem.getCustomer(uId);
             [~, account] = this.accountSystem.newAccount(customer, password);
             retStr = "You have successfully created an account with aid:" + account.getId();
+        end
+        
+        function [retStr, staff] = registerNewStaff(this, name, password, isManager)
+            [~, staff] = this.staffSystem.newStaff(name, password, isManager);
+            retStr = "You have successfully registered with uid:" + staff.getId();       
         end
     end
 end

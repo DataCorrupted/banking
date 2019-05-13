@@ -4,6 +4,7 @@ classdef Challenge
     
     properties (Access = protected)
         name
+        secret
     end
     
     methods (Abstract)

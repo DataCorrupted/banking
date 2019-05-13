@@ -19,11 +19,13 @@ acc1.transferTo(acc4, 400);
 acc2.transferTo(acc4, 300);
 acc3.deposit(700);
 acc5.withdraw(100);
-acc3.deposit(10000)
+acc3.deposit(10000);
 acc3.transferTo(acc1, 1000);
 acc3.transferTo(acc2, 1000);
 
 result = [acc1.query(); acc2.query(); acc3.query(); acc4.query(); acc5.query()];
 if (result == [1800; 1700; 8700; 700; 0])
-    fprintf('Account Test Passed!\n');
+    fprintf('Account test passed!\n');
+else
+    fprintf('Account test failed!\n');
 end

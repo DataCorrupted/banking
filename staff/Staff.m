@@ -10,6 +10,9 @@ classdef Staff < Entity
             this.name = name;
             this.manager = isManager;
         end
+        function isManager = isManager(this)
+            isManager = this.manager;
+        end
         
     end
 end

@@ -1,11 +1,7 @@
-%cus1 = IndividualCustomer('Peter Rong', '1234567896453', '77085239', '321202199610300036');
-%cus2 = IndividualCustomer('Shaozhong Rong', 'shaozhong.R', '69850764', '321202199610300035');
-%cus3 = BusinessCustomer('Sanai EE Llt.', 'secretPassword', '32323232', '321251202056');
-
-cus1 = Customer("Peter Rong", "1234567896453", "77085239");
-cus2 = Customer("Shaozhong Rong", "shaozhong.R", "69850764");
-cus3 = Customer("Sanai EE Llt.", "secretPassword", "32323232");
-cus4 = Customer("Nobody", "Nobody", "12345678");
+cus1 = Customer("Peter Rong", "12345678", "321202199610300036");
+cus2 = Customer("Shaozhong Rong", "shaozhong.R", "122121198708030012");
+cus3 = Customer("Sanai EE Llt.", "secretPassword", "121233200401211121");
+cus4 = Customer("Nobody", "Nobody", "321202190208270022");
 
 testCustomerSystem = CustomerSystem([cus1; cus2; cus3; cus4]);
 
@@ -14,3 +10,10 @@ cus2.addAccount("1234123412341234");
 cus2.addAccount("1203984712093849");
 cus3.addAccount("8394049293049482");
 cus3.addAccount("0053592669824525");
+
+result = [cus1.getAccountNum(); cus2.getAccountNum(); cus3.getAccountNum(); cus4.getAccountNum()];
+if (result == [1; 2; 2; 0])
+    fprintf('Customer test passed!\n');
+else
+    fprintf('Customer test failed!\n');
+end

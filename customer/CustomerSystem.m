@@ -1,7 +1,7 @@
 classdef CustomerSystem < EntitySystem
 
     properties (Constant)
-        uIdLen = 15;
+        uIdLen = 18;
     end
     
     methods (Access = public)
@@ -11,9 +11,15 @@ classdef CustomerSystem < EntitySystem
         function this = addCustomer(this, customer)
             this.addEntity(customer);
         end
-        function [this, customer] = newCustoemr(this, name, password)
-            customer = Customer(name, password, this.newId(this.uIdLen));
+        function [this, customer] = newCustomer(this, name, password, uid)
+            customer = Customer(name, password, uid);
             this.addCustomer(customer);
+        end
+        function uIdLen = getUIdLen(this)
+            uIdLen = this.uIdLen;
+        end
+        function customer = getCustomer(this, uid)
+            customer = this.getEntity(uid);
         end
     end
 

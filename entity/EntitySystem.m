@@ -13,7 +13,6 @@ classdef (Abstract) EntitySystem < handle
         function this = addEntity(this, entity)
             this.entities = [this.entities; entity];
             this.entityNum = this.entityNum + 1;
-            this.deleteEntityFromPendingList(entity.getId());
         end
 
         function [this, status] = deleteEntity(this, id)
@@ -36,8 +35,8 @@ classdef (Abstract) EntitySystem < handle
             end
             k = 0;  % Failed. Such entity doesn't exist.
         end
-        function isValid = isValid(this, id)
-            isValid = (this.getEntityIdx(id) ~= 0);
+        function isTaken = isTaken(this, id)
+            isTaken = (this.getEntityIdx(id) ~= 0);
         end
         function entity = getEntity(this, uid)
             idx = this.getEntityIdx(uid);
@@ -48,7 +47,7 @@ classdef (Abstract) EntitySystem < handle
         end
         
         function [retStr, entity] = logIn(this, id, password)
-            if (~ this.isValid(id))
+            if (~ this.isTaken(id))
                 retStr = Common.LogInIdInvalid;
                 entity = [];
                 return;
@@ -65,7 +64,7 @@ classdef (Abstract) EntitySystem < handle
         % TODO: Requires lock or atom for thread safety.
         function entity = newId(this, len)
             entity = this.getKLenRandStr(len);
-            while (this.getEntityIdx(entity) == 0)
+            while (this.getEntityIdx(entity) ~= 0)
                 entity = this.getKLenRandStr(len);
             end
         end
@@ -75,6 +74,9 @@ classdef (Abstract) EntitySystem < handle
                 str(i) = num2str(randi(9));
             end
             str = string(str);
+        end
+        function num = getNum(this)
+            num = this.entityNum;
         end
     end
 end

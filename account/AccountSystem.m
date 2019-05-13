@@ -1,7 +1,7 @@
 classdef AccountSystem < EntitySystem
 
     properties (Constant)
-        aIdLen = 12;
+        aIdLen = 16;
     end
     methods (Access = public)
         function this = AccountSystem(accounts)
@@ -14,10 +14,13 @@ classdef AccountSystem < EntitySystem
         function account = getAccount(this, aid)
             account = this.getEntity(aid);
         end
-        function [this, account] = registerNewAccount(customer, password)
+        function [this, account] = newAccount(this, customer, password)
             account = Account(this.newId(this.aIdLen), password);
             this.addAccount(account);
             customer.addAccount(account.getId());
+        end
+        function isExisting = isExisting(this, aid)
+            isExisting = this.isTaken(aid);
         end
     end
 

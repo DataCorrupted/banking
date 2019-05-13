@@ -1,7 +1,4 @@
-classdef Account < Entity
-    %ACCOUNT Summary of this class goes here
-    %   Detailed explanation goes here
-    
+classdef Account < Entity  
     properties (Access = private)
         remains
     end
@@ -39,7 +36,10 @@ classdef Account < Entity
         
         function [this, status] = withdraw(this, amount)
             if (amount > this.remains)
-                status = Status.Insufficient;  return;
+                status = Status.Insufficient;   return;
+            end
+            if (amount < 0)
+                status = Status.InvalidAmount;  return;
             end
             status = Status.Successful;
             this.remains = this.remains - amount;
