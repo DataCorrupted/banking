@@ -5,17 +5,18 @@ addpath('./challenge');
 addpath('./common');
 addpath('./entity');
 addpath('./entity-system')
-addpath('./test');
+addpath('./sample');
 addpath('./ui/mlapp');
+addpath('./test')
 
-TestAccount; 
-accountSystem = testAccountSystem;
+SampleAccount; 
+accountSystem = sampleAccountSystem;
 
-TestCustomer;
-customerSystem = testCustomerSystem;
+SampleCustomer;
+customerSystem = sampleCustomerSystem;
 
-TestStaff;
-staffSystem = testStaffSystem;
+SampleStaff;
+staffSystem = sampleStaffSystem;
 
 fprintf("Using test data to initiate database...\n");
 processor = Processor(accountSystem, customerSystem, staffSystem);

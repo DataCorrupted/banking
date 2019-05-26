@@ -4,7 +4,7 @@ acc3 = Account("8394049293049482", "789654");
 acc4 = Account("0053592669824525", "562851");
 acc5 = Account("1203984712093849", "324503");
 
-testAccountSystem = AccountSystem([acc1; acc2; acc3; acc4; acc5]);
+sampleAccountSystem = AccountSystem([acc1; acc2; acc3; acc4; acc5]);
 
 % Remains:
 % 
@@ -25,7 +25,7 @@ acc3.transferTo(acc2, 1000);
 
 result = [acc1.query(); acc2.query(); acc3.query(); acc4.query(); acc5.query()];
 if (result == [1800; 1700; 8700; 700; 0])
-    fprintf('Account test passed!\n');
+    fprintf('Account sample test passed!\n');
 else
-    fprintf('Account test failed!\n');
+    fprintf('Account sample test failed!\n');
 end
