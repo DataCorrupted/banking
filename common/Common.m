@@ -22,6 +22,7 @@ classdef Common
         UIdWrongLength          = "This ID does not have 15 digits";
         UIdRegistered              = "This ID has been registered as a customer."
         UIdEmpty                = "ID field empty";
+        UIdInValid              = "ID Doesn't exist";
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%        
         ATMLogInUiHead          = "Rong's Banking ATM System";
         AccountLogInUiHead      = "Rong's Banking Account System";

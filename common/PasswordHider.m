@@ -30,6 +30,22 @@ classdef PasswordHider < handle
             password = this.password;
             this.password = "";
             this.hider = "";
+            password = hashPassword(password);
+        end
+    end
+    
+    methods (Static)
+        % This is just a naive implementation of hash function.
+        function hashedPassword = hashPassword(password)
+            hashedPassword = "";
+            len = strlength(password);
+            password = char(password);
+            for i= 1:len 
+                oldChar = password(i);
+                newChar = mod(round(sin(log(oldChar * 42 + 996)) * 12121), 94) + 32; 
+                char(newChar)
+                hashedPassword = hashedPassword + char(newChar);
+            end
         end
     end
 end

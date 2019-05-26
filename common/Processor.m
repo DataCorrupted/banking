@@ -25,8 +25,8 @@ classdef Processor
         end
         
         % We are assuming that the account always exist;
-        function aid = getAccount(this, aid)
-            aid = this.accountSystem.getAccount(aid); 
+        function account = getAccount(this, aid)
+            account = this.accountSystem.getAccount(aid); 
         end
         
         function retStr = transfer(this, srcAccount, aid, amount)
@@ -77,7 +77,7 @@ classdef Processor
                 return
             end
             if (strlength(password0) < 8)
-                retStr = Common.PasswordTooShot;
+                retStr = Common.PasswordTooShort;
                 return
             end
         end
@@ -114,15 +114,21 @@ classdef Processor
             end            
         end
         
-        function [retStr, account] = registerNewAccount(this, uId, password)
-            customer = this.customerSystem.getCustomer(uId);
+        function [retStr, account] = registerNewAccount(this, uid, password)
+            [~, isExisting] = this.isExistingUId(uid);
+            if ~ isExisting
+                retStr = Common.UIdInValid;
+                account = [];
+                return;
+            end
+            customer = this.customerSystem.getCustomer(uid);
             [~, account] = this.accountSystem.newAccount(customer, password);
             retStr = "You have successfully created an account with aid:" + account.getId();
         end
         
         function [retStr, staff] = registerNewStaff(this, name, password, isManager)
             [~, staff] = this.staffSystem.newStaff(name, password, isManager);
-            retStr = "You have successfully registered with uid:" + staff.getId();       
+            retStr = "You have successfully registered with sid:" + staff.getId();       
         end
     end
 end
