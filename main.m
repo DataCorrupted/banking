@@ -1,13 +1,7 @@
 close all;
 clear all;
 
-addpath('./challenge');
-addpath('./common');
-addpath('./entity');
-addpath('./entity-system')
-addpath('./sample');
-addpath('./ui/mlapp');
-addpath('./test')
+addPath();
 
 SampleAccount; 
 accountSystem = sampleAccountSystem;
