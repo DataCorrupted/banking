@@ -171,7 +171,7 @@ classdef TestProcessor < matlab.unittest.TestCase
             t.verifyEqual(retStr, Common.UIdRegistered);
             [isValid, retStr] = t.processor.isValidUId("321202190208270024");
             t.verifyEqual(isValid, 1);
-            t.verifyEqual(retStr, Common.UIdValid);2
+            t.verifyEqual(retStr, Common.UIdValid);
         end
     end
 end

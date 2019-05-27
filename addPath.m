@@ -9,5 +9,6 @@ function addPath()
     addpath('./test/entity')
     addpath('./test/entity-system')
     addpath('./test/common')
+    addpath('./test/ui')
 end
 
