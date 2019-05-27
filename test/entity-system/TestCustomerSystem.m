@@ -33,6 +33,11 @@ classdef TestCustomerSystem < matlab.unittest.TestCase
             t.customerSystem.addCustomer(t.newCus);
             t.verifyEqual(t.customerSystem.getCustomer("321202190208270022"), t.newCus);
         end
+
+        function testIsTaken(t)
+            t.verifyEqual(t.customerSystem.isTaken("321202003630100000"), true);
+            t.verifyEqual(t.customerSystem.isTaken("321202003630100001"), false);
+        end
     end
 end
 

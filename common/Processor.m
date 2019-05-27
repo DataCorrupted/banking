@@ -110,7 +110,7 @@ classdef Processor
                 retStr = Common.UIdValid;
                 isExisting = 1;
             else
-                retStr = Common.UIdRegistered;
+                retStr = Common.UIdInValid;
             end            
         end
         

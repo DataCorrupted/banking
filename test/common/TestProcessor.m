@@ -150,5 +150,28 @@ classdef TestProcessor < matlab.unittest.TestCase
             t.verifyEqual(t.staffSystem.getNum(), 4);
             t.verifyEqual(staff.isManager(), 1);
         end
+        function testIsExistingUId(t)
+            [retStr, isExisting] = t.processor.isExistingUId("321202190208270022");
+            t.verifyEqual(isExisting, 1);
+            t.verifyEqual(retStr, Common.UIdValid);
+
+            [retStr, isExisting] = t.processor.isExistingUId("321202190208270024");
+            t.verifyEqual(isExisting, 0);
+            t.verifyEqual(retStr, Common.UIdInValid);
+        end
+        function testIsValidUId(t)
+            [isValid, retStr] = t.processor.isValidUId("");
+            t.verifyEqual(isValid, 0);
+            t.verifyEqual(retStr, Common.UIdEmpty);
+            [isValid, retStr] = t.processor.isValidUId("124376865432");
+            t.verifyEqual(isValid, 0);
+            t.verifyEqual(retStr, Common.UIdWrongLength);
+            [isValid, retStr] = t.processor.isValidUId("321202190208270022");
+            t.verifyEqual(isValid, 0);
+            t.verifyEqual(retStr, Common.UIdRegistered);
+            [isValid, retStr] = t.processor.isValidUId("321202190208270024");
+            t.verifyEqual(isValid, 1);
+            t.verifyEqual(retStr, Common.UIdValid);2
+        end
     end
 end
