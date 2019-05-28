@@ -30,7 +30,7 @@ classdef PasswordHider < handle
             password = this.password;
             this.password = "";
             this.hider = "";
-            password = hashPassword(password);
+            %password = hashPassword(password);
         end
     end
     
