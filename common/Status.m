@@ -1,7 +1,4 @@
 classdef Status < int32
-    %STATUS Summary of this class goes here
-    %   Detailed explanation goes here
-    
    enumeration
       Successful         (0)
       Waiting            (1)
@@ -11,6 +8,12 @@ classdef Status < int32
       InvalidCustomer   (-4)
       InvalidAccount    (-5)
       WrongPassword     (-6)
+
+      TicketInvalid     (-1)
+      TicketVoided      (1)
+      TicketTaken       (2)
+      TicketCalled      (3)
+      
    end
 end
 

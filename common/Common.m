@@ -35,7 +35,9 @@ classdef Common
         NewCustomerUiHead       = ["Register as a valued customer at Rong's Bank, today!";
                                     "Fill in the following and you are good to go!"];
         NewStaffUiHead          = "Register a new staff in Rong's Banking";
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%       
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%      
+        TakeTicketSuccessful    = "You ave successfully taken a ticket."
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%      
    end
 end
 

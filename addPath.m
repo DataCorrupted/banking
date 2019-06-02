@@ -4,11 +4,13 @@ function addPath()
     addpath('./entity');
     addpath('./entity-system')
     addpath('./sample');
+    addpath('./ticket')
     addpath('./ui/mlapp');
     
     addpath('./test/entity')
     addpath('./test/entity-system')
     addpath('./test/common')
     addpath('./test/ui')
+    addpath('./test/ticket')
 end
 

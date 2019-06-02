@@ -3,6 +3,7 @@ classdef Processor
         accountSystem
         customerSystem
         staffSystem
+        ticketSystem
     end
        
     methods
@@ -10,6 +11,7 @@ classdef Processor
             this.accountSystem = accountSystem;
             this.customerSystem = customerSystem;
             this.staffSystem = staffSystem;
+            this.ticketSystem = TicketSystem();
         end
         
         function [retStr, customer] = logInCustomer(this, uid, password)
@@ -129,6 +131,22 @@ classdef Processor
         function [retStr, staff] = registerNewStaff(this, name, password, isManager)
             [~, staff] = this.staffSystem.newStaff(name, password, isManager);
             retStr = "You have successfully registered with sid:" + staff.getId();       
+        end
+
+        function retStr = takeTicket(this)
+            this.ticketSystem.takeTicket();
+            retStr = Common.TakeTicketSuccessful;
+        end
+
+        function retStr = callTicket(this)
+            [~, status] = this.ticketSystem.callTicket();
+            if (status == Status.TicketCalled)
+                retStr = "Ticket " + num2str(this.ticketSystem.getCurrentTicket());
+            else if (status == Status.Voided)
+                retStr = {"Ticket " + num2str(this.ticketSystem.getCurrentTicket()) + "has been voided",
+                            this.ticketSystem.callTicket()};
+                end
+            end
         end
     end
 end
