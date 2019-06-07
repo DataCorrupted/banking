@@ -8,11 +8,9 @@ classdef TicketSystem < handle
     methods (Access = private)
         function [this, status] = voidTicket(this)
             status = Status.TicketInvalid;
-            if (this.head < this.tail)
-                this.head = this.head + 1;
-                this.called = 0;
-                status = Status.TicketVoided;
-            end
+            this.head = this.head + 1;
+            this.called = 0;
+            status = Status.TicketVoided;
         end
     end
 
@@ -39,6 +37,10 @@ classdef TicketSystem < handle
         end
 
         function [this, status] = callTicket(this)
+            if (this.head > this.tail)
+                status = Status.TicketDepleted;
+                return
+            end
             this.called = this.called + 1;
             status = Status.TicketCalled;
             if (this.called > 3)

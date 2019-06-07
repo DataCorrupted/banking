@@ -13,7 +13,7 @@ classdef Status < int32
       TicketVoided      (1)
       TicketTaken       (2)
       TicketCalled      (3)
-      
+      TicketDepleted    (-2)
    end
 end
 

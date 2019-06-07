@@ -9,12 +9,14 @@ classdef StaffUi < matlab.apps.AppBase
         LogOutButton         matlab.ui.control.Button
         ManageAccountButton  matlab.ui.control.Button
         ManageStaffButton    matlab.ui.control.Button
+        NextCustomerButton   matlab.ui.control.Button
     end
 
     
     properties (Access = private)
         staff
-        processor;
+        publicMessageUi
+        processor
     end
     
     methods (Access = public)
@@ -29,6 +31,7 @@ classdef StaffUi < matlab.apps.AppBase
         function startupFcn(app, processor, staff)
             app.staff = staff;
             app.processor = processor;
+            app.publicMessageUi = PublicMessageUi;
         end
 
         % Button pushed function: LogOutButton
@@ -53,6 +56,12 @@ classdef StaffUi < matlab.apps.AppBase
                 return
             end
             NewStaffUi(app.processor);
+        end
+
+        % Button pushed function: NextCustomerButton
+        function NextCustomerButtonPushed(app, event)
+            retStr = app.processor.callTicket();
+            app.publicMessageUi.updateMessage(retStr);
         end
     end
 
@@ -100,6 +109,12 @@ classdef StaffUi < matlab.apps.AppBase
             app.ManageStaffButton = uibutton(app.UIFigure, 'push');
             app.ManageStaffButton.Position = [92 165 100 22];
             app.ManageStaffButton.Text = 'Manage Staff';
+
+            % Create NextCustomerButton
+            app.NextCustomerButton = uibutton(app.UIFigure, 'push');
+            app.NextCustomerButton.ButtonPushedFcn = createCallbackFcn(app, @NextCustomerButtonPushed, true);
+            app.NextCustomerButton.Position = [355 52 100 22];
+            app.NextCustomerButton.Text = 'Next Customer';
         end
     end
 

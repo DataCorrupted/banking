@@ -141,12 +141,17 @@ classdef Processor
         function retStr = callTicket(this)
             [~, status] = this.ticketSystem.callTicket();
             if (status == Status.TicketCalled)
-                retStr = "Ticket " + num2str(this.ticketSystem.getCurrentTicket());
-            else if (status == Status.Voided)
-                retStr = {"Ticket " + num2str(this.ticketSystem.getCurrentTicket()) + "has been voided",
-                            this.ticketSystem.callTicket()};
+                retStr = "Ticket " + num2str(this.ticketSystem.getHead()) + "Please report to our staff.";
+            else if (status == Status.TicketVoided)
+                retStr = "Ticket " + num2str(this.ticketSystem.getHead()) + "has been voided";
+            else if (status == Status.TicketDepleted)
+                retStr = Common.TicketDepleted;
+                end
                 end
             end
+        end
+        function retStr = getTail(this)
+            retStr = num2str(this.ticketSystem.getTail());
         end
     end
 end

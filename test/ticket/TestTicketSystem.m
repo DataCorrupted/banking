@@ -33,6 +33,13 @@ classdef TestTicketSystem < matlab.unittest.TestCase
             t.ticketSystem.callTicket();
             t.ticketSystem.callTicket();
             t.ticketSystem.callTicket();
+            t.ticketSystem.callTicket();
+            t.ticketSystem.callTicket();
+            t.ticketSystem.callTicket();
+            t.ticketSystem.callTicket();
+            [~, status] = t.ticketSystem.callTicket();
+            t.verifyEqual(t.ticketSystem.getHead(), 3);
+            t.verifyEqual(status, Status.TicketDepleted);
         end
 
         function testUseTicket(t)

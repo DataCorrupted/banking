@@ -28,7 +28,8 @@ classdef Common
         AccountLogInUiHead      = "Rong's Banking Account System";
         CustomerLogInUiHead     = "Rong's Banking Customer System";
         StaffLogInUiHead        = "Rong's Banking Staff System";
-        PromptUiHead            = "Rong's Banking message";
+        PromptUiHead            = "Rong's Banking Message";
+        TicketUiHead            = "Rong's Banking Ticket System";
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         NewAccountUiHead        = ["Fill in the following and you are good to go!"; 
                                     "Create an account at Rong's Banking, today!"];
@@ -37,6 +38,8 @@ classdef Common
         NewStaffUiHead          = "Register a new staff in Rong's Banking";
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%      
         TakeTicketSuccessful    = "You ave successfully taken a ticket."
+        TakeATicket             = "Press to take a ticket. "
+        TicketDepleted          = "No more tickets left."
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%      
    end
 end
