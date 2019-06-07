@@ -5,6 +5,15 @@ classdef Processor
         staffSystem
         ticketSystem
     end
+
+    properties (Access = public)
+        % I really don't like this.
+        % But to test Ui, last window has to pass the next window to tester
+        % before it shuts down.
+        % Making anything public with necessity is not a good idea
+        % So I decided to hide something here.
+        darkSpace
+    end
        
     methods
         function this = Processor(accountSystem, customerSystem, staffSystem)
