@@ -72,7 +72,7 @@ classdef NewAccountUi < matlab.apps.AppBase
                 return
             end
             [retStr, account] = app.processor.registerNewAccount(app.YourUidEditField.Value, password1);
-            PromptUi(app.processor, retStr, account);
+            app.processor.darkSpace = PromptUi(app.processor, retStr, account);
             % If the user is creating account on he's own, 
             % a new user window should pop up on account creating.
             app.lastApp.update();

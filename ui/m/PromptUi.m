@@ -37,13 +37,13 @@ classdef PromptUi < matlab.apps.AppBase
         function ContinueButtonPushed(app, event)
             type = class(app.entity);
             if (strcmp(type, "Customer"))
-                CustomerUi(app.processor, app.entity);
+                app.processor.darkSpace = CustomerUi(app.processor, app.entity);
             end
             if (strcmp(type, "Account"))
-                AccountUi(app.processor, app.entity, 0);
+                app.processor.darkSpace = AccountUi(app.processor, app.entity, 0);
             end
             if (strcmp(type, "Staff"))
-                StaffUi(app.processor, app.entity);
+                app.processor.darkSpace = StaffUi(app.processor, app.entity);
             end
             app.delete;
         end

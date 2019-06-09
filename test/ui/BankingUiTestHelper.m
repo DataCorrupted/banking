@@ -15,11 +15,14 @@ classdef BankingUiTestHelper < matlab.uitest.TestCase
                 
                 % Manual call back
                 hider = passwordHider.updatePassword(comp.Value);
-                this.app.PasswordEditField.Value = hider;
+                comp.Value = hider;
 
                 % Stop and wait for next char
                 pause(0.2);
             end
+        end
+        function ds = darkSpace(this)
+            ds = this.processor.darkSpace;
         end
         function deleteDarkSpace(this)
             this.processor.darkSpace.delete;

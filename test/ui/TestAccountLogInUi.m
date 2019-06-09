@@ -9,7 +9,7 @@ classdef TestAccountLogInUi < BankingUiTestHelper
     methods (Test)
         function testLogInEmpty(t)
             t.press(t.app.LogInButton);
-            t.verifyEqual(class(t.processor.darkSpace), 'double');
+            t.verifyEqual(class(t.darkSpace()), 'double');
             t.verifyEqual(t.app.TextArea.Value{1}, convertStringsToChars(Common.LogInIdInvalid));
             t.deleteApp();
         end
@@ -17,7 +17,7 @@ classdef TestAccountLogInUi < BankingUiTestHelper
             t.type(t.app.AccountIdEditField, "1234567890123456");
             t.typePassword(t.app.PasswordEditField, "1", t.app.passwordHider);
             t.press(t.app.LogInButton);
-            t.verifyEqual(class(t.processor.darkSpace), 'double');
+            t.verifyEqual(class(t.darkSpace()), 'double');
             t.verifyEqual(t.app.TextArea.Value{1}, convertStringsToChars(Common.LogInWrongPassword));
             t.deleteApp();
         end
@@ -26,7 +26,7 @@ classdef TestAccountLogInUi < BankingUiTestHelper
             t.typePassword(t.app.PasswordEditField, "123456", t.app.passwordHider);
             
             t.press(t.app.LogInButton);
-            t.verifyEqual(class(t.processor.darkSpace), 'AccountUi');
+            t.verifyEqual(class(t.darkSpace()), 'AccountUi');
             t.deleteDarkSpace();
         end
     end

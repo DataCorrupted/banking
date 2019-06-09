@@ -63,7 +63,7 @@ classdef NewStaffUi < matlab.apps.AppBase
             end
             isManager = app.ThisisamanagerthathasalofofrightsCheckBox.Value;
             [retStr, staff] = app.processor.registerNewStaff(name, password1, isManager);
-            PromptUi(app.processor, retStr, staff);
+            app.processor.darkSpace = PromptUi(app.processor, retStr, staff);
             app.delete;
         end
 

@@ -77,7 +77,7 @@ classdef NewCustomerUi < matlab.apps.AppBase
             end
             name = app.NameEditField.Value;
             [retStr, customer] = app.processor.registerNewCustomer(name, password1, id);
-            PromptUi(app.processor, retStr, customer);
+            app.processor.darkSpace = PromptUi(app.processor, retStr, customer);
             app.delete;
         end
 
