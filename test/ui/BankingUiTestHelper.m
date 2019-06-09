@@ -5,7 +5,7 @@ classdef BankingUiTestHelper < matlab.uitest.TestCase
     end
     methods (Access = protected)
         % This is a hacked type in function to help me input passwords.
-        function typePassword(this, comp, password)
+        function typePassword(this, comp, password, passwordHider)
             password = convertStringsToChars(password);
             strlen = strlength(password);
 
@@ -14,7 +14,7 @@ classdef BankingUiTestHelper < matlab.uitest.TestCase
                 comp.Value = password(1:i);
                 
                 % Manual call back
-                hider = this.app.passwordHider.updatePassword(comp.Value);
+                hider = passwordHider.updatePassword(comp.Value);
                 this.app.PasswordEditField.Value = hider;
 
                 % Stop and wait for next char

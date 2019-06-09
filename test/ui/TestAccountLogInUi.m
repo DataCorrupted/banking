@@ -15,7 +15,7 @@ classdef TestAccountLogInUi < BankingUiTestHelper
         end
         function testLogInFail(t)
             t.type(t.app.AccountIdEditField, "1234567890123456");
-            t.type(t.app.PasswordEditField, "1");
+            t.typePassword(t.app.PasswordEditField, "1", t.app.passwordHider);
             t.press(t.app.LogInButton);
             t.verifyEqual(class(t.processor.darkSpace), 'double');
             t.verifyEqual(t.app.TextArea.Value{1}, convertStringsToChars(Common.LogInWrongPassword));
@@ -23,7 +23,7 @@ classdef TestAccountLogInUi < BankingUiTestHelper
         end
         function testLogInSuccessful(t)
             t.type(t.app.AccountIdEditField, "1234567890123456");
-            t.typePassword(t.app.PasswordEditField, "123456");
+            t.typePassword(t.app.PasswordEditField, "123456", t.app.passwordHider);
             
             t.press(t.app.LogInButton);
             t.verifyEqual(class(t.processor.darkSpace), 'AccountUi');

@@ -18,13 +18,15 @@ classdef NewAccountUi < matlab.apps.AppBase
     end
 
     
+    properties (Access = public)
+        passwordHider0
+        passwordHider1
+    end
     properties (Access = private)
         processor % Description
         customer
         isStaff
         lastApp
-        passwordHider0
-        passwordHider1
     end
     
 

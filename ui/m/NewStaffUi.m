@@ -19,11 +19,13 @@ classdef NewStaffUi < matlab.apps.AppBase
         PasswordEditFieldLabel_4      matlab.ui.control.Label
     end
 
-    
-    properties (Access = private)
-        processor % Description
+  
+    properties (Access = public)
         passwordHider0
         passwordHider1
+    end
+    properties (Access = private)
+        processor % Description
     end    
 
     methods (Access = private)
