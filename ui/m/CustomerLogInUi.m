@@ -5,7 +5,7 @@ classdef CustomerLogInUi < matlab.apps.AppBase
         UIFigure                matlab.ui.Figure
         UserIdEditFieldLabel    matlab.ui.control.Label
         UserIdEditField         matlab.ui.control.EditField
-        LoginButton             matlab.ui.control.Button
+        LogInButton             matlab.ui.control.Button
         PasswordEditFieldLabel  matlab.ui.control.Label
         PasswordEditField       matlab.ui.control.EditField
         TextArea                matlab.ui.control.TextArea
@@ -14,11 +14,12 @@ classdef CustomerLogInUi < matlab.apps.AppBase
     end
 
     
-    properties (Access = private)
-        processor
+    properties (Access = public)
         passwordHider
     end
-    
+    properties (Access = private)
+        processor
+    end
 
     methods (Access = private)
 
@@ -29,13 +30,13 @@ classdef CustomerLogInUi < matlab.apps.AppBase
             app.passwordHider = PasswordHider();
         end
 
-        % Button pushed function: LoginButton
-        function LoginButtonPushed(app, event)
+        % Button pushed function: LogInButton
+        function LogInButtonPushed(app, event)
             uid = app.UserIdEditField.Value;
             [retStr, customer] = app.processor.logInCustomer(uid, app.passwordHider.getPassword());
             app.TextArea.Value = retStr;
             if (strcmp(retStr, Common.LogInSuccessful))
-                CustomerUi(app.processor, customer);
+                app.processor.darkSpace = CustomerUi(app.processor, customer);
                 app.delete;     % Shutdown this page.
             else
                 app.TextArea.Value = retStr;
@@ -51,7 +52,7 @@ classdef CustomerLogInUi < matlab.apps.AppBase
 
         % Button pushed function: NotavaluedcustomerRegisterNowButton
         function NotavaluedcustomerRegisterNowButtonPushed(app, event)
-            NewCustomerUi(app.processor);
+            app.processor.darkSpace = NewCustomerUi(app.processor);
         end
     end
 
@@ -76,11 +77,11 @@ classdef CustomerLogInUi < matlab.apps.AppBase
             app.UserIdEditField = uieditfield(app.UIFigure, 'text');
             app.UserIdEditField.Position = [236 324 163 22];
 
-            % Create LoginButton
-            app.LoginButton = uibutton(app.UIFigure, 'push');
-            app.LoginButton.ButtonPushedFcn = createCallbackFcn(app, @LoginButtonPushed, true);
-            app.LoginButton.Position = [180 230 219 22];
-            app.LoginButton.Text = 'Log in';
+            % Create LogInButton
+            app.LogInButton = uibutton(app.UIFigure, 'push');
+            app.LogInButton.ButtonPushedFcn = createCallbackFcn(app, @LogInButtonPushed, true);
+            app.LogInButton.Position = [180 230 219 22];
+            app.LogInButton.Text = 'Log In';
 
             % Create PasswordEditFieldLabel
             app.PasswordEditFieldLabel = uilabel(app.UIFigure);

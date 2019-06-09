@@ -7,6 +7,7 @@ function addPath()
     addpath('./ticket')
     addpath('./ui/mlapp');
     
+    addpath('./test')
     addpath('./test/entity')
     addpath('./test/entity-system')
     addpath('./test/common')

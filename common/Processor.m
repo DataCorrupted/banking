@@ -1,4 +1,4 @@
-classdef Processor
+classdef Processor < handle
     properties (Access = private)
         accountSystem
         customerSystem
@@ -10,7 +10,7 @@ classdef Processor
         % I really don't like this.
         % But to test Ui, last window has to pass the next window to tester
         % before it shuts down.
-        % Making anything public with necessity is not a good idea
+        % Making anything public without a reason is not a good idea
         % So I decided to hide something here.
         darkSpace
     end
@@ -21,6 +21,7 @@ classdef Processor
             this.customerSystem = customerSystem;
             this.staffSystem = staffSystem;
             this.ticketSystem = TicketSystem();
+            darkSpace = 0;
         end
         
         function [retStr, customer] = logInCustomer(this, uid, password)

@@ -13,9 +13,11 @@ classdef AccountLogInUi < matlab.apps.AppBase
     end
 
     
+    properties (Access = public)
+        passwordHider
+    end
     properties (Access = private)
         processor
-        passwordHider
         aid
         isATM
     end
@@ -45,7 +47,7 @@ classdef AccountLogInUi < matlab.apps.AppBase
             end
             [retStr, account] = app.processor.logInAccount(app.aid, app.passwordHider.getPassword());
             if (strcmp(retStr, Common.LogInSuccessful))
-                AccountUi(app.processor, account, app.isATM);
+                app.processor.darkSpace = AccountUi(app.processor, account, app.isATM);
                 app.delete;
             else
                 app.TextArea.Value = retStr;
