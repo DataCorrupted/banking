@@ -1,9 +1,5 @@
 function testAll()
-    testCommon()
-    testEntity()
-    testEntitySystem()
-    testTicket()
-    
-    %testUi()
+    testBackend()
+    testFrontend()
 end
 

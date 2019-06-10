@@ -3,7 +3,6 @@ classdef Processor < handle
         accountSystem
         customerSystem
         staffSystem
-        ticketSystem
     end
 
     properties (Access = public)
@@ -13,6 +12,8 @@ classdef Processor < handle
         % Making anything public without a reason is not a good idea
         % So I decided to hide something here.
         darkSpace
+        % Making ticketSystem public for testing.
+        ticketSystem
     end
        
     methods

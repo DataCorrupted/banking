@@ -23,7 +23,7 @@ classdef TestAccountUiFromATM < BankingUiTestHelper
             t.press(t.app.transferButton);
             t.verifyEqual(t.srcAccount.query(), srcOldAmount - 100);
             t.verifyEqual(t.dstAccount.query(), dstOldAmount + 100);
-            t.verifyEqual(t.app.AmountEditField.Value{1}, 0);
+            t.verifyEqual(t.app.AmountEditField.Value, 0);
             % Double press will have not effect.
             t.press(t.app.transferButton);
             t.verifyEqual(t.srcAccount.query(), srcOldAmount - 100);
