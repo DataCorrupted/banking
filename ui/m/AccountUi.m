@@ -84,6 +84,7 @@ classdef AccountUi < matlab.apps.AppBase
             amount = app.AmountEditField.Value;
             retStr = app.processor.transfer(app.account, aid, amount);
             app.TextArea.Value = retStr;
+            app.AmountEditField.Value = 0;
         end
 
         % Button pushed function: queryButton

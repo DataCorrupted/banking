@@ -43,7 +43,7 @@ classdef CustomerUi < matlab.apps.AppBase
 
         % Button pushed function: LogoutButton
         function LogoutButtonPushed(app, event)
-            CustomerLogInUi(app.processor);
+            app.processor.darkSpace = CustomerLogInUi(app.processor);
             app.delete;
         end
 
@@ -56,7 +56,7 @@ classdef CustomerUi < matlab.apps.AppBase
 
         % Button pushed function: NewAccountButton
         function NewAccountButtonPushed(app, event)
-            NewAccountUi(app.processor, app.customer, 0, app);
+            app.processor.darkSpace = NewAccountUi(app.processor, app.customer, 0, app);
         end
     end
 

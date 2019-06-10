@@ -43,7 +43,6 @@ classdef PasswordHider < handle
             for i= 1:len 
                 oldChar = password(i);
                 newChar = mod(round(sin(log(oldChar * 42 + 996)) * 12121), 94) + 32; 
-                char(newChar)
                 hashedPassword = hashedPassword + char(newChar);
             end
         end

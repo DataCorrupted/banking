@@ -36,18 +36,19 @@ classdef StaffUi < matlab.apps.AppBase
 
         % Button pushed function: LogOutButton
         function LogOutButtonPushed(app, event)
-            StaffLogInUi(app.processor)
-            app.delete
+            app.processor.darkSpace = StaffLogInUi(app.processor);
+            app.publicMessageUi.delete;
+            app.delete;
         end
 
         % Button pushed function: NewCustomerButton
         function NewCustomerButtonPushed(app, event)
-            NewCustomerUi(app.processor)
+            app.processor.darkSpace = NewCustomerUi(app.processor);
         end
 
         % Button pushed function: NewAccountButton
         function NewAccountButtonPushed(app, event)
-            NewAccountUi(app.processor, [], 1, app)
+            app.processor.darkSpace = NewAccountUi(app.processor, [], 1, app);
         end
 
         % Button pushed function: NewStaffButton
@@ -55,7 +56,7 @@ classdef StaffUi < matlab.apps.AppBase
             if (~ app.staff.isManager())
                 return
             end
-            NewStaffUi(app.processor);
+            app.processor.darkSpace = NewStaffUi(app.processor);
         end
 
         % Button pushed function: NextCustomerButton

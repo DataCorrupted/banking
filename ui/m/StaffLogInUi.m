@@ -5,7 +5,7 @@ classdef StaffLogInUi < matlab.apps.AppBase
         UIFigure                matlab.ui.Figure
         StaffIdEditFieldLabel   matlab.ui.control.Label
         StaffIdEditField        matlab.ui.control.EditField
-        LoginButton             matlab.ui.control.Button
+        LogInButton             matlab.ui.control.Button
         PasswordEditFieldLabel  matlab.ui.control.Label
         PasswordEditField       matlab.ui.control.EditField
         TextArea                matlab.ui.control.TextArea
@@ -30,13 +30,13 @@ classdef StaffLogInUi < matlab.apps.AppBase
             app.Header.Value = Common.StaffLogInUiHead;
         end
 
-        % Button pushed function: LoginButton
-        function LoginButtonPushed(app, event)
+        % Button pushed function: LogInButton
+        function LogInButtonPushed(app, event)
             uid = app.StaffIdEditField.Value;
-            [resStr, staff] = app.processor.logInStaff(uid, app.passwordHider.getPassword);
-            app.TextArea.Value = resStr;
-            if (strcmp(resStr, Common.LogInSuccessful))
-                StaffUi(app.processor, staff);
+            [retStr, staff] = app.processor.logInStaff(uid, app.passwordHider.getPassword);
+            app.TextArea.Value = retStr;
+            if (strcmp(retStr, Common.LogInSuccessful))
+                app.processor.darkSpace = StaffUi(app.processor, staff);
                 app.delete;     % Shutdown this page.
             else
                 app.TextArea.Value = retStr;
@@ -72,11 +72,11 @@ classdef StaffLogInUi < matlab.apps.AppBase
             app.StaffIdEditField = uieditfield(app.UIFigure, 'text');
             app.StaffIdEditField.Position = [275 322 103 22];
 
-            % Create LoginButton
-            app.LoginButton = uibutton(app.UIFigure, 'push');
-            app.LoginButton.ButtonPushedFcn = createCallbackFcn(app, @LoginButtonPushed, true);
-            app.LoginButton.Position = [202 230 173 22];
-            app.LoginButton.Text = 'Log in';
+            % Create LogInButton
+            app.LogInButton = uibutton(app.UIFigure, 'push');
+            app.LogInButton.ButtonPushedFcn = createCallbackFcn(app, @LogInButtonPushed, true);
+            app.LogInButton.Position = [201.5 230 174 22];
+            app.LogInButton.Text = 'Log In';
 
             % Create PasswordEditFieldLabel
             app.PasswordEditFieldLabel = uilabel(app.UIFigure);
