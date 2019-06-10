@@ -21,7 +21,7 @@ Be prepared :)
 
 ## Test
 
-Using `<test/testAll.m>` you may do a through testing on all components.
+Using `<test.m>` you may do a through testing on all components.
 The test would take approx. 10 minutes, as UI testing is really slow.
 However, you may also choose to only test backend components using `<test/testBackend.m>`, it would only last for 10 seconds.
 
@@ -29,12 +29,14 @@ However, you may also choose to only test backend components using `<test/testBa
 
 In MATLAB, change current folder to the one _main.m_ is in.
 
-Press F5 or type main and press enter. Three interfaces will show.
+Press F5 or type main and press enter. Four interfaces will show.
+
+If you are interested in running anything independently, please make sure that you run `<addPath.m>` as MATLAB will not detect folders by default, we have to manually add it.
 
 ## Play with it
 
-I have prepared some customer accounts, bank accounts and staff accounts in test/ folder. 
-
+I have prepared some customer accounts, bank accounts and staff accounts in `<sample>` folder. 
+These sample data is used by my tests.
 Or you can register an account an play with it.
 
 ## Limitations

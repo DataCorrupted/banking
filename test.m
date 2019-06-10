@@ -1,4 +1,6 @@
-function testAll()
+function test()
+    addPath();
+        
     testBackend()
     testFrontend()
 end
