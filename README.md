@@ -2,7 +2,7 @@
 
 This is a project for CS192 Software Engineering.
 
-**Please refer to doc/ for change of requirements and testing plans.**
+**Please refer to `doc` for change of requirements, testing plans, etc.**
 
 In this banking project, I was responsible for development. Unfortunately, we have to use MATLAB, many features that I am not familar with is not used. The project could have been developed better if I am using Java.
 
@@ -15,7 +15,7 @@ Anyway, this is a fun project.
 
 Just got an MATLAB 2018b and you are good.
 
-It is known that it will run on MATLAB 2016\*.
+It is not known if it will run on MATLAB 2016\*.
 There are reports that apps designed in MATLAB 2018 cannot run properly in MATLAB 2019. Not sure how this app performs.
 Be prepared :)
 
@@ -41,13 +41,10 @@ Or you can register an account an play with it.
 
 ## Limitations
 
-I didn't implement Challenge part. Although I felt necessary. But it is not part of the requrement, and I am lazy, mostly lazy. (Man, fight with MATLAB OOP for two days and you know what I mean)
-
-Manager can only create new Staff, that's all. Staff cannot get promoted or else I have to write a new frontend. (Poor Staff.)
-
-Cannot deposit for now since I don't have an ATM.
-
-These functions are not implemented, but you can press the button, just there will be no response. Relax, it will not explode.
+- I didn't implement Challenge part. Although I felt necessary. But it is not part of the requrement, and I am lazy, mostly lazy. (Man, fight with MATLAB OOP for two days and you know what I mean)
+- Manager can only create new Staff, that's all. Staff cannot get promoted or else I have to write a new frontend. (Poor Staff.)
+- Cannot deposit for now since I don't have an ATM.
+- These functions are not implemented, but you can press the button, just there will be no response. Relax, it will not explode.
 
 ## Doc
 
