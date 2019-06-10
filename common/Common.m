@@ -19,8 +19,8 @@ classdef Common
         TermsDisagree           = "Please agree to whatever legal terms we have for you.";
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%        
         UIdValid                = "1";
-        UIdWrongLength          = "This ID does not have 15 digits";
-        UIdRegistered              = "This ID has been registered as a customer."
+        UIdWrongLength          = "This ID does not have 18 digits";
+        UIdRegistered           = "This ID has been registered as a customer."
         UIdEmpty                = "ID field empty";
         UIdInValid              = "ID Doesn't exist";
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%        

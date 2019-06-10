@@ -25,9 +25,11 @@ classdef BankingUiTestHelper < matlab.uitest.TestCase
             ds = this.processor.darkSpace;
         end
         function deleteDarkSpace(this)
+            pause(1);
             this.processor.darkSpace.delete;
         end
         function deleteApp(this)
+            pause(1);
             this.app.delete;
         end
     end
