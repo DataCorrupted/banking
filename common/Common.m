@@ -41,6 +41,7 @@ classdef Common
         TakeATicket             = "Press to take a ticket. "
         TicketDepleted          = "No more tickets left."
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%      
+        PauseTime               = 0.5;
    end
 end
 

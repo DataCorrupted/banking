@@ -3,6 +3,7 @@ function testAll()
     testEntity()
     testEntitySystem()
     testTicket()
-    testUi()
+    
+    %testUi()
 end
 
