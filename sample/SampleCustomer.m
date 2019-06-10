@@ -13,7 +13,7 @@ cus3.addAccount("0053592669824525");
 
 result = [cus1.getAccountNum(); cus2.getAccountNum(); cus3.getAccountNum(); cus4.getAccountNum()];
 if (result == [1; 2; 2; 0])
-    fprintf('Customer sample test passed!\n');
+    fprintf('Customer samples created!\n');
 else
-    fprintf('Customer sample test failed!\n');
+    fprintf('Customer samples test failed!\n');
 end

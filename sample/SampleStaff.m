@@ -6,7 +6,7 @@ sampleStaffSystem = StaffSystem([stf1; stf2; stf3]);
 
 result = [stf1.isManager(); stf2.isManager(); stf3.isManager(); sampleStaffSystem.getNum()];
 if (result == [0; 1; 0; 3])
-    fprintf('Staff sample test passed!\n');
+    fprintf('Staff samples created!\n');
 else
-    fprintf('Staff sample test failed!\n');
+    fprintf('Staff samples test failed!\n');
 end

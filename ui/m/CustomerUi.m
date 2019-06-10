@@ -4,7 +4,7 @@ classdef CustomerUi < matlab.apps.AppBase
     properties (Access = public)
         UIFigure              matlab.ui.Figure
         TextArea              matlab.ui.control.TextArea
-        LogoutButton          matlab.ui.control.Button
+        LogOutButton          matlab.ui.control.Button
         AccountDropDownLabel  matlab.ui.control.Label
         AccountDropDown       matlab.ui.control.DropDown
         ManageButton          matlab.ui.control.Button
@@ -41,8 +41,8 @@ classdef CustomerUi < matlab.apps.AppBase
             end
         end
 
-        % Button pushed function: LogoutButton
-        function LogoutButtonPushed(app, event)
+        % Button pushed function: LogOutButton
+        function LogOutButtonPushed(app, event)
             app.processor.darkSpace = CustomerLogInUi(app.processor);
             app.delete;
         end
@@ -51,7 +51,7 @@ classdef CustomerUi < matlab.apps.AppBase
         function ManageButtonPushed(app, event)
             aid = app.AccountDropDown.Value;
             isATM = 0;
-            AccountLogInUi(app.processor, aid, isATM);
+            app.processor.darkSpace = AccountLogInUi(app.processor, aid, isATM);
         end
 
         % Button pushed function: NewAccountButton
@@ -75,11 +75,11 @@ classdef CustomerUi < matlab.apps.AppBase
             app.TextArea = uitextarea(app.UIFigure);
             app.TextArea.Position = [72 370 224 60];
 
-            % Create LogoutButton
-            app.LogoutButton = uibutton(app.UIFigure, 'push');
-            app.LogoutButton.ButtonPushedFcn = createCallbackFcn(app, @LogoutButtonPushed, true);
-            app.LogoutButton.Position = [525 18 100 22];
-            app.LogoutButton.Text = 'Log out';
+            % Create LogOutButton
+            app.LogOutButton = uibutton(app.UIFigure, 'push');
+            app.LogOutButton.ButtonPushedFcn = createCallbackFcn(app, @LogOutButtonPushed, true);
+            app.LogOutButton.Position = [525 18 100 22];
+            app.LogOutButton.Text = 'Log Out';
 
             % Create AccountDropDownLabel
             app.AccountDropDownLabel = uilabel(app.UIFigure);

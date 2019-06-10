@@ -25,7 +25,7 @@ acc3.transferTo(acc2, 1000);
 
 result = [acc1.query(); acc2.query(); acc3.query(); acc4.query(); acc5.query()];
 if (result == [1800; 1700; 8700; 700; 0])
-    fprintf('Account sample test passed!\n');
+    fprintf('Account samples created!\n');
 else
-    fprintf('Account sample test failed!\n');
+    fprintf('Account samples test failed!\n');
 end

@@ -10,7 +10,7 @@ classdef AccountUi < matlab.apps.AppBase
         TransfertoEditField       matlab.ui.control.EditField
         AmountEditFieldLabel      matlab.ui.control.Label
         AmountEditField           matlab.ui.control.NumericEditField
-        LogoutButton              matlab.ui.control.Button
+        LogOutButton              matlab.ui.control.Button
         Welcome                   matlab.ui.control.Label
     end
 
@@ -21,7 +21,7 @@ classdef AccountUi < matlab.apps.AppBase
         isATM       % Decides whether this ui runs on ATM or customer's browser.
     end
     
-    properties (Access = private)
+    properties (Access = public)
         withdrawButton
         withdrawAmountEditField
         withdrawAmountEditFieldLabel
@@ -92,10 +92,10 @@ classdef AccountUi < matlab.apps.AppBase
             app.TextArea.Value = app.processor.query(app.account);
         end
 
-        % Button pushed function: LogoutButton
-        function LogoutButtonPushed(app, event)
+        % Button pushed function: LogOutButton
+        function LogOutButtonPushed(app, event)
             if (app.isATM)
-                AccountLogInUi(app.processor, "0", app.isATM);
+                app.processor.darkSpace = AccountLogInUi(app.processor, "0", app.isATM);
             end
             app.delete
         end
@@ -149,11 +149,11 @@ classdef AccountUi < matlab.apps.AppBase
             app.AmountEditField = uieditfield(app.UIFigure, 'numeric');
             app.AmountEditField.Position = [491 390 100 22];
 
-            % Create LogoutButton
-            app.LogoutButton = uibutton(app.UIFigure, 'push');
-            app.LogoutButton.ButtonPushedFcn = createCallbackFcn(app, @LogoutButtonPushed, true);
-            app.LogoutButton.Position = [491 34 100 22];
-            app.LogoutButton.Text = 'Log out';
+            % Create LogOutButton
+            app.LogOutButton = uibutton(app.UIFigure, 'push');
+            app.LogOutButton.ButtonPushedFcn = createCallbackFcn(app, @LogOutButtonPushed, true);
+            app.LogOutButton.Position = [491 34 100 22];
+            app.LogOutButton.Text = 'Log Out';
 
             % Create Welcome
             app.Welcome = uilabel(app.UIFigure);
