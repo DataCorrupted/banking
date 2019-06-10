@@ -52,6 +52,12 @@ To pretend that this is a commerical, fully finished and well-organized project.
 
 You may refer to these docs should you have any questions about it.
 
+## Shipment
+
+To ship this software, use `<make>` in command line.
+
+Since all codes are written in MATLAB, simply de-press it would suffice.
+
 ## Something else
 
 This project can be found on [github](https://github.com/DataCorrupted/banking)(It's possible I have't open sourced this project by the time you press this link, so it may not work. But hey, this is MATLAB, the moment when you read this README means you have source code at hand.)
