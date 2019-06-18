@@ -17,18 +17,18 @@
 ## T2: Integration Test
 ### T2.1: _Processor_ + _EntitySystem_
 
-### T1.2: LogIn
-- T1.2.1 _AccountLogInUi_ + _Processor_
-- T1.2.2 _CustomerLogInUi_ + _Processor_
-- T1.2.3 _StaffLogInUi_ + _Processor_
+### T2.2: LogIn
+- T2.2.1 _AccountLogInUi_ + _Processor_
+- T2.2.2 _CustomerLogInUi_ + _Processor_
+- T2.2.3 _StaffLogInUi_ + _Processor_
 
-### T1.3: NewEntity
-- T1.3.1 _NewAccountUi_ + _Processor_
-- T1.3.2 _NewCustomerUi_ + _Processor_
-- T1.3.3 _NewStaffUi_ + _Processor_
+### T2.3: NewEntity
+- T2.3.1 _NewAccountUi_ + _Processor_
+- T2.3.2 _NewCustomerUi_ + _Processor_
+- T2.3.3 _NewStaffUi_ + _Processor_
 
-### T1.4: EntityUi
-- T1.4.1 _AccountUi_ + _Processor_
-- T1.4.2 _CustomerUi_ + _Processor_
-- T1.4.3 _StaffUi_ + _Processor_
+### T2.4: EntityUi
+- T2.4.1 _AccountUi_ + _Processor_
+- T2.4.2 _CustomerUi_ + _Processor_
+- T2.4.3 _StaffUi_ + _Processor_
 

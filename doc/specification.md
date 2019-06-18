@@ -1,6 +1,6 @@
 # Specification
 
-## S1 LogIn
+## S1 Log In
 On all id and password information provided, check with target systems if the entity exists.
 ### S1.1 Exist
 Get the instance of that entity, pass it to create the next Ui interface.
